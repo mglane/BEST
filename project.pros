@@ -1,0 +1,47 @@
+{
+    "py/object": "pros.conductor.project.Project",
+    "py/state": {
+        "project_name": "BEST",
+        "target": "cortex",
+        "templates": {
+            "kernel": {
+                "location": "C:\\Users\\lane\\AppData\\Roaming\\PROS\\templates\\kernel@2.12.2",
+                "metadata": {
+                    "origin": "pros-mainline",
+                    "output": "bin/output.bin"
+                },
+                "name": "kernel",
+                "py/object": "pros.conductor.templates.local_template.LocalTemplate",
+                "supported_kernels": null,
+                "system_files": [
+                    "firmware\\cortex.ld",
+                    "common.mk",
+                    "src\\auto.c",
+                    "include\\API.h",
+                    "firmware\\STM32F10x.ld",
+                    "firmware\\libpros.a",
+                    "firmware\\uniflash.jar",
+                    "src\\init.c"
+                ],
+                "target": "cortex",
+                "user_files": [
+                    "src\\initialize.cc",
+                    "include\\main.h",
+                    "src\\opcontrol.cc",
+                    "src\\autonomous.c",
+                    "src\\initialize.cpp",
+                    "src\\autonomous.cc",
+                    "include\\main.hh",
+                    "src\\opcontrol.cpp",
+                    "src\\initialize.c",
+                    "src\\opcontrol.c",
+                    "src\\autonomous.cpp",
+                    "Makefile",
+                    "include\\main.hpp"
+                ],
+                "version": "2.12.2"
+            }
+        },
+        "upload_options": {}
+    }
+}
