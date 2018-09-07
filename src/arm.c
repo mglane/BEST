@@ -9,8 +9,8 @@
  *   Commented: Sep 9, 2017
  */
 
-#include "arm.h"  // Include arm.h
-#include "main.h" // Include main.h
+#include "arm.h"
+#include "main.h"
 
 #include "debug.h"
 extern int dbgmsk;

@@ -23,8 +23,8 @@ int dbgmsk = D_MIN|D_MED|D_TRACE|D_1;
  * set an initial values for reverse which is used to determine which side of
  *  side of the robot is the front
  */
-bool g_reverse = false;
-bool g_disable_drive = false;
+bool g_reverse = false;  // default to forward operation mode
+bool g_disable_drive = false; // turn wheel motors off
 bool g_reload = false;
 
 /*
@@ -45,6 +45,7 @@ bool g_reload = false;
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
 void operatorControl() {
+	// initialize the state of the robot
 	state state = NORMAL;
 
   // go ahead and grab the semaphore for autodumping since the
@@ -57,29 +58,12 @@ void operatorControl() {
     switch (state) {
     case NORMAL:
 
-
-    /*
-     * Top priority: driveing test soon, and arm needs testing
-     * 2nd prioraty: Mani claw test, and can claws ready to test
-     * 3rd prioraty: hose fireing need to test
-     * 4th prioraty: hose aiming test ASAP
-     */
-
-     /*
-      * driveing two motors
-      * arm one motor
-      * mani claw one servo
-      * can claws two servos
-      * hose fireing one motor
-      * hose aiming one servo
-      */
-
-      processDriveTrain();
-      processArm();
-      processManiClaw();
-      processCanClaws();
-      processHoseFire();
-      processHoseAim();
+      processDriveTrain();  // process for wheel movement
+      processArm();         // process to handle arm movement
+      processManiClaw();    // process to control maniquin arm
+      processCanClaws();    // process to comtrol claw for cans
+      processHoseFire();    // process to fire golf balls
+      processHoseAim();     // process to aim golf ball basket
 
       /*
        * Buttons used:
@@ -94,17 +78,23 @@ void operatorControl() {
        *
        *  Button postions on the controller:
        *
-       *   __5______6__
-       *  |  7      8  |
-       *  |            |
-       *  |  4 3  2 1  |
-       *  |  ________  |
-       *  | /        \ |
-       *  V           V
+       *   __5____________6__
+			 *  |                  |
+       *  |  7            8  |
+			 *  |                  |
+       *  |   |          |   |
+			 *  | 4---        ---1 |
+       *  |   |          |   |
+       *  |  _3__________2_  |
+       *  | /              \ |
+       *  V                 V
        */
 
 
       break;
+
+			case UNKNOWN:
+				break;
 
     default:
       break;

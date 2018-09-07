@@ -94,7 +94,7 @@ void initialize();
  */
 void operatorControl();
 
-#define MOTOR_MAX 127// Moter_Max = 127
+#define MOTOR_MAX 127 // maximum value allowed for motors (0-127)
 
 /* motor assignments */
 
@@ -104,8 +104,8 @@ void operatorControl();
  *  motors into separate banks
  */
 #define MOTOR_L_WHEEL_PORT 2
-#define MOTOR_HOSE_FIRE_PORT 3
 #define MOTOR_R_WHEEL_PORT 6
+#define MOTOR_HOSE_FIRE_PORT 3
 #define MOTOR_ARM_PORT 7
 
 #define SERVO_HOSE_AIM_PORT 4
@@ -116,8 +116,8 @@ void operatorControl();
 /**
  * Digital input assignments
  */
-#define LIMIT_ARM_DOWN_PORT 1
-#define LIMIT_ARM_UP_PORT 2
+#define LIMIT_ARM_DOWN_PORT 1 // limit switch for arm moving down
+#define LIMIT_ARM_UP_PORT 2   // limit switch for arm moving up
 
 /**
  * Analog input assignments
@@ -125,12 +125,19 @@ void operatorControl();
 #define SENSOR_POT_PORT 1
 
 /**
- * define state machine
+ * Define state machine
+ *
+ * States are used to put the robot into special operating modes. They
+ *  can include a normal state for regular operation or other listed
+ *  states that can be used to complete particular tasks.
+ *
+ * NORMAL - normal operations
+ * UNKNOWN - watchdog state to allow to robot to get back to a steady state
  */
 typedef enum state { NORMAL, UNKNOWN } state;
 
-extern bool g_reverse;
-extern bool g_disable_drive;
+extern bool g_reverse; // state of robot control in forward or reverse mode
+extern bool g_disable_drive; // switch to disable motors so they will not move
 extern bool g_reload;
 
 /**

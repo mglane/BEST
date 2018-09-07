@@ -1,8 +1,21 @@
+/** @file debug.h
+ * @brief Header file for debug functions
+ *
+ * Functions to allow for quick output to terminal console.
+ *
+ * Set DEBUG to 1 to activate when developing and wanting debug messages.
+ * Set DEBUG to 0 in a production environment so resources are not wasted
+ *  processing the messages.
+ *
+ * D(msk, fmt, args...) - debug print out to terminal; lists file, function, and line number
+ * P(msk, fmt, args...) - print message to terminal
+ */
+
 #ifndef DEBUG_H_
 #define DEBUG_H_
 
 #ifndef DEBUG
-#define DEBUG 0
+#define DEBUG 1
 #endif
 
 #define D_MIN   0x00010000  // Minimum level
@@ -17,12 +30,12 @@
  */
 extern int dbgmsk;
 
-#ifdef DEBUG
-  #define D(msk, fmt, args...) if(msk & dbgmsk) { printf("%s:",__FUNCTION__); printf(fmt, ## args ); }
+#if DEBUG
+  #define D(msk, fmt, args...) if(msk & dbgmsk) { printf("%s - %s: %d: ", __FILE__, __FUNCTION__, __LINE__ ); printf(fmt, ## args ); }
   #define P(msk, fmt, args...) if(msk & dbgmsk) { printf(fmt, ## args ); if(msk & D_FLUSH); }
 #else  /* DEBUG */
-  #define D(msk, fmt, ...) do { if (0 && (msk & dbgmsk)) printf(fmt, VARARGS); } while (0)
-  #define P(msk, fmt, ...) do { if (0 && (msk & dbgmsk)) printf(fmt, VARARGS); } while (0)
+  #define D(msk, fmt, ...) do { if (0 && (msk & dbgmsk)) printf(fmt); } while (0)
+  #define P(msk, fmt, ...) do { if (0 && (msk & dbgmsk)) printf(fmt); } while (0)
 #endif  /* DEBUG */
 
 /*
