@@ -46,7 +46,7 @@ void initializeIO() {
  */
 void initialize() {
 
-  setTeamName("SCHE #66");
+  setTeamName("SCHE #955");
 
   // commented out for now until we add automated code
   //  semaAutoDump = semaphoreCreate();
