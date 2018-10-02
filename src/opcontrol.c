@@ -9,23 +9,14 @@
 
 #include "main.h"
 
-#include "arm.h"
-#include "canclaws.h"
-#include "maniclaw.h"
+
 #include "drivetrain.h"
-#include "hosefire.h"
-#include "hoseaim.h"
+#include "arm.h"
+#include "maniclaw.h"
+
 
 #include "debug.h"
 int dbgmsk = D_MIN|D_MED|D_TRACE|D_1;
-
-/*
- * set an initial values for reverse which is used to determine which side of
- *  side of the robot is the front
- */
-bool g_reverse = false;  // default to forward operation mode
-bool g_disable_drive = false; // turn wheel motors off
-bool g_reload = false;
 
 /*
  * Runs the user operator control code. This function will be started in its own task with the
@@ -45,25 +36,12 @@ bool g_reload = false;
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
 void operatorControl() {
-	// initialize the state of the robot
-	state state = NORMAL;
-
-  // go ahead and grab the semaphore for autodumping since the
-	//   task we are about to create will try to grab it immediately
-	//  semaphoreTake(semaAutoDump, -1);
-
-	//	taskCreate(autoDump, TASK_DEFAULT_STACK_SIZE, NULL, TASK_PRIORITY_DEFAULT);
 
   while (true) {
-    switch (state) {
-    case NORMAL:
 
       processDriveTrain();  // process for wheel movement
       processArm();         // process to handle arm movement
-      processManiClaw();    // process to control maniquin arm
-      processCanClaws();    // process to comtrol claw for cans
-      processHoseFire();    // process to fire golf balls
-      processHoseAim();     // process to aim golf ball basket
+      processManiClaw();  
 
       /*
        * Buttons used:
@@ -91,17 +69,7 @@ void operatorControl() {
        */
 
 
-      break;
 
-			case UNKNOWN:
-				break;
-
-    default:
-      break;
-    }
-
-    // Don't hog CPU
-    // put in a delay of 20ms
     taskDelay(20);
   }
 }

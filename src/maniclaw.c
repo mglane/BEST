@@ -43,12 +43,12 @@ void processManiClaw() {
 
   // If closeManiClaw equals true then servoOutput equals -100
   if (closeManiClaw) {
-    servoOutput = -100;
+    servoOutput = 127;
   } else {
     // Otherwise servoOutput equals 0
     servoOutput = 0;
   }
 
   // Set the servo
-  motorSet(SERVO_MANICLAW_PORT, servoOutput);
+  motorSet(SERVO_BRAKE_PORT, servoOutput);
 }

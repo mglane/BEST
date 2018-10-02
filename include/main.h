@@ -103,25 +103,26 @@ void operatorControl();
  *  and high (ports 6-9) banks; split large and small
  *  motors into separate banks
  */
-#define MOTOR_L_WHEEL_PORT 2
-#define MOTOR_R_WHEEL_PORT 6
-#define MOTOR_HOSE_FIRE_PORT 3
-#define MOTOR_ARM_PORT 7
+#define MOTOR_ARM_ROTATING_PORT 2
+#define MOTOR_ARM_TELESCOPING_PORT 6
+#define MOTOR_WHEEL_PORT 3
+#define MOTOR_ARM_VERTICAL_PORT 7
 
-#define SERVO_HOSE_AIM_PORT 4
-#define SERVO_MANICLAW_PORT 5
-#define SERVO_TOP_CAN_CLAW_PORT 8
-#define SERVO_BOTTOM_CAN_CLAWS_PORT 9
+#define SERVO_BRAKE_PORT 4
+#define SERVO_PINCHER_1_PORT 5
+#define SERVO_PINCHER_2_PORT 8
+#define SERVO_FILAMENT_PINCHER_PORT 9
+
 
 /**
  * Digital input assignments
- */
+ *//* Code from last year *
 #define LIMIT_ARM_DOWN_PORT 1 // limit switch for arm moving down
 #define LIMIT_ARM_UP_PORT 2   // limit switch for arm moving up
 
 /**
  * Analog input assignments
- */
+ *//* Code from last year *
 #define SENSOR_POT_PORT 1
 
 /**
@@ -134,6 +135,8 @@ void operatorControl();
  * NORMAL - normal operations
  * UNKNOWN - watchdog state to allow to robot to get back to a steady state
  */
+/* Last years code *
+
 typedef enum state { NORMAL, UNKNOWN } state;
 
 extern bool g_reverse; // state of robot control in forward or reverse mode
