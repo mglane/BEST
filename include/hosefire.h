@@ -1,4 +1,3 @@
-
 #ifndef HOSEFIRE_H_
 #define HOSEFIRE_H_
 

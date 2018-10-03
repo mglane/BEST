@@ -12,7 +12,7 @@
 
 #include "drivetrain.h"
 #include "arm.h"
-#include "maniclaw.h"
+#include "trashclaw.h"
 
 
 #include "debug.h"
@@ -41,7 +41,7 @@ void operatorControl() {
 
       processDriveTrain();  // process for wheel movement
       processArm();         // process to handle arm movement
-      processManiClaw();  
+      processTrashClaw();   // process for claw movement
 
       /*
        * Buttons used:

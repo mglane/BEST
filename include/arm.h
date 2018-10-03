@@ -1,11 +1,3 @@
-/*
- * arm.c
- *
- *  Created on: Sep 6, 2017
- *      Author: Allen & Lane
- */
-
-
 #ifndef ARM_H_
 #define ARM_H_
 
@@ -15,7 +7,7 @@ extern "C" {
 #endif
 
 /**
- * Code to handle the drive motors
+ * Code to handle the drive motors for the arm
  *
  * @param void
  * @return void

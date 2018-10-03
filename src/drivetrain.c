@@ -1,34 +1,63 @@
 /*
- * Edited from last year
+ * drivetrain.c
+ *
+ * process drives robot up and down the rail
+ * this includes:
+ *   LeftShoulderButton drives one direction
+ *   RightShoulderButton drives in the opposite direction
+ *
+ * Last modified: October 2, 2018
+ *        Author: Allen & Carver
+ *
  */
 
+// Include these files
 #include "drivetrain.h"
 #include "main.h"
 
 #include "debug.h"
 extern int dbgmsk;
 
+//Process when called
 void processDriveTrain() {
+  // Static variables for reverse mode.
+  static int reverseDriveTrainDelay = 0;
+  static int reverseDriveTrain = 1;
 
-  // We want to be able to reverse the motor; LeftShoulderDown moves it one direction
-  // and RightShoulderDown moves the motor the opposite direction
+  // A variable for the speed of the driving motors.
+  int drive_speed;
 
-  // read the button values for the wheel motors
+  // The reverse mode code.
+  if(joystickGetDigital(1, 7, JOY_RIGHT)){
 
-if (joystickGetDigital(1,5, JOY_DOWN))
-{
-  motorSet(MOTOR_WHEEL_PORT,127);
-  P(D_MIN, "Driving forward\n");
+    // If reverseDriveTrainDelay is equal to 50, than reverse the driving motors.
+    if(reverseDriveTrainDelay++ == 50){
+      reverseDriveTrain *= -1;
+    }
+  }
+  // If the button is released reset the delay.
+  else {
+    reverseDriveTrainDelay = 0;
+  }
 
-}
-else if (joystickGetDigital(1,6, JOY_DOWN))
-{
-  motorSet(MOTOR_WHEEL_PORT,-127);
-  P(D_MIN, "Driving backward\n");
-}
-else
-{
-  motorSet (MOTOR_WHEEL_PORT,0);
-}
+  // If the correct buttons are pressed, set the driving speed.
+  if (joystickGetDigital(1,5, JOY_DOWN))
+  {
+    drive_speed = MOTOR_MAX * reverseDriveTrain;
+    P(D_MIN, "Driving forward\n");
 
+  }
+  else if (joystickGetDigital(1,6, JOY_DOWN))
+  {
+    drive_speed = -MOTOR_MAX * reverseDriveTrain;
+    P(D_MIN, "Driving backward\n");
+  }
+  // Otherwise set the speed to zero.
+  else
+  {
+    drive_speed = 0;
+  }
+
+  // Set the motor's speed.
+  motorSet(MOTOR_WHEEL_PORT, drive_speed);
 }

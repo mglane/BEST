@@ -1,10 +1,3 @@
-/*
- * hoseaim.h
- *
- *  Created on: Sep 6, 2017
- *      Author: Allen & Lane
- */
-
 #ifndef HOSEAIM_H_
 #define HOSEAIM_H_
 
