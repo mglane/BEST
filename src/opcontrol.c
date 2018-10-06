@@ -13,6 +13,7 @@
 #include "drivetrain.h"
 #include "arm.h"
 #include "trashclaw.h"
+#include "extraservos.h"
 
 
 #include "debug.h"

@@ -109,46 +109,10 @@ void operatorControl();
 #define MOTOR_ARM_VERTICAL_PORT 7
 
 #define SERVO_CLAW_PORT 4
-#define SERVO_PINCHER_1_PORT 5
+#define SERVO_CLAW_PORT_2 5
 #define SERVO_PINCHER_2_PORT 8
 #define SERVO_FILAMENT_PINCHER_PORT 9
 
-
-/**
- * Digital input assignments
- *//* Code from last year *
-#define LIMIT_ARM_DOWN_PORT 1 // limit switch for arm moving down
-#define LIMIT_ARM_UP_PORT 2   // limit switch for arm moving up
-
-/**
- * Analog input assignments
- *//* Code from last year *
-#define SENSOR_POT_PORT 1
-
-/**
- * Define state machine
- *
- * States are used to put the robot into special operating modes. They
- *  can include a normal state for regular operation or other listed
- *  states that can be used to complete particular tasks.
- *
- * NORMAL - normal operations
- * UNKNOWN - watchdog state to allow to robot to get back to a steady state
- */
-/* Last years code *
-
-typedef enum state { NORMAL, UNKNOWN } state;
-
-extern bool g_reverse; // state of robot control in forward or reverse mode
-extern bool g_disable_drive; // switch to disable motors so they will not move
-extern bool g_reload;
-
-/**
- * Define semaphores and mutexs
- */
-// currently commented out because we don't have automation code
-//Semaphore semaAutoDump;
-//Mutex mutexArmControl;
 
 // End C++ export structure
 #ifdef __cplusplus

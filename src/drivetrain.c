@@ -31,7 +31,7 @@ void processDriveTrain() {
   if(joystickGetDigital(1, 7, JOY_RIGHT)){
 
     // If reverseDriveTrainDelay is equal to 50, than reverse the driving motors.
-    if(reverseDriveTrainDelay++ == 50){
+    if(reverseDriveTrainDelay++ == 20){
       reverseDriveTrain *= -1;
     }
   }
