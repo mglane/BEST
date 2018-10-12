@@ -13,7 +13,7 @@
 #include "drivetrain.h"
 #include "arm.h"
 #include "trashclaw.h"
-#include "extraservos.h"
+#include "telescope.h"
 
 
 #include "debug.h"
@@ -43,6 +43,7 @@ void operatorControl() {
       processDriveTrain();  // process for wheel movement
       processArm();         // process to handle arm movement
       processTrashClaw();   // process for claw movement
+      processTelescope();  // process for telescoping arm
 
       /*
        * Buttons used:

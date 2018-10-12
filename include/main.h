@@ -110,8 +110,10 @@ void operatorControl();
 
 #define SERVO_CLAW_PORT 4
 #define SERVO_CLAW_PORT_2 5
-#define SERVO_PINCHER_2_PORT 8
+#define SERVO_TELESCOPE_PORT 8
 #define SERVO_FILAMENT_PINCHER_PORT 9
+
+
 
 
 // End C++ export structure

@@ -20,14 +20,14 @@
 void initializeIO() {
 
     // set analog ports
-    pinMode(SENSOR_POT_PORT, INPUT_ANALOG);
+  //  pinMode(SENSOR_POT_PORT, INPUT_ANALOG);
 
     /*
      * this is our limit switch for the arm
      * initialize this as an input pin
      */
-    pinMode(LIMIT_ARM_DOWN_PORT, INPUT);
-    pinMode(LIMIT_ARM_UP_PORT, INPUT);
+    //pinMode(LIMIT_ARM_DOWN_PORT, INPUT);
+    //pinMode(LIMIT_ARM_UP_PORT, INPUT);
 
 }
 
