@@ -33,7 +33,7 @@ void processTrashClaw() {
     if (delay++ == 10) {
       closeTrashClaw = !closeTrashClaw;
 
-      P(D_MIN, "ManiClaw: %d\n", closeTrashClaw);
+      P(D_MIN, "TrashClaw: %d\n", closeTrashClaw);
     }
   } else {
     // Otherwise delay gets reset

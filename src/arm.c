@@ -7,7 +7,7 @@
  *   rotating the arm
  *   telescope the arm
  *
- * Last modified: October 2, 2018
+ * Last modified: October 13, 2018
  *        Author: Carver
  *
  */
@@ -24,6 +24,8 @@ void processArm()
   // Static variables for reverse mode.
   static int reverseArmDelay = 0;
   static int reverseArm = 1;
+  static bool halfrotSpeed = 0;
+  static int halfrotSpeedDelay = 10;
 
   // The reverse mode code.
   if(joystickGetDigital(1, 7, JOY_DOWN)){
@@ -43,8 +45,8 @@ void processArm()
   int vertical = joystickGetAnalog(1, 2);
   int rotating = joystickGetAnalog(1, 4) * reverseArm;
 
-    bool halfSpeed;
-    int halfSpeedDelay;
+
+
   /*
    * determine whether the robot should move at
    *  half speed
@@ -55,15 +57,15 @@ void processArm()
   if (joystickGetDigital(1, 7, JOY_LEFT)) {
     // put in a delay of a half second
     //   in case the button was hit by accident
-    if (halfSpeedDelay++ == 10) {
+    if (halfrotSpeedDelay++ == 10) {
       // toggle the state of the speed and reset the counter
-      halfSpeed = !halfSpeed;
+      halfrotSpeed = !halfrotSpeed;
 
-      P(D_MIN, "Halfspeed setting: %d\n", halfSpeed);
+      P(D_MIN, "Halfspeed setting: %d\n", halfrotSpeed);
     }
   } else {
     // the button has been released, reset the time counter
-    halfSpeedDelay = 0;
+    halfrotSpeedDelay = 0;
   }
 
 
@@ -72,12 +74,12 @@ void processArm()
   // *  output values by 2
 
 
-  if (halfSpeed) {
+  if (halfrotSpeed) {
     rotating = (rotating >> 1);
   }
 // end of halfSpeed process
 
-
+/*
   // Code for telescope function
   // One button moves the motor in one direction
   // while the other button moves the motor in the opposite direction
@@ -96,9 +98,9 @@ void processArm()
   {
     telescoping_speed = 0;
   }
-
+*/
   motorSet(MOTOR_ARM_VERTICAL_PORT, vertical);
   motorSet(MOTOR_ARM_ROTATING_PORT, rotating);
 
-  motorSet(MOTOR_ARM_TELESCOPING_PORT, telescoping_speed);
+//  motorSet(MOTOR_ARM_TELESCOPING_PORT, telescoping_speed);
 }
