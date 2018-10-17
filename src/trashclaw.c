@@ -21,12 +21,22 @@ void processTrashClaw() {
   static int servoOutput;
 
   static bool closeTrashClaw;
+  static bool closeReefClaw;
   static int delay = 0;
 
   // If you press the top left button on the shoulder of the controller
   // and hold it for more than 1 second
   // then closeTrashClaw equals the oposite of its previous value
-  if (joystickGetDigital(1, 5, JOY_UP)) {
+  if (joystickGetDigital(1, 6, JOY_UP)) {
+
+    // check to see if the delay has passed
+    // 50 is approximately 1 second (50 x 20ms = 1s)
+    if (delay++ == 10) {
+      closeReefClaw = !closeReefClaw;
+
+      P(D_MIN, "ReefClaw: %d\n", closeReefClaw);
+    }
+  } else if (joystickGetDigital(1, 5, JOY_UP)) {
 
     // check to see if the delay has passed
     // 50 is approximately 1 second (50 x 20ms = 1s)
@@ -40,13 +50,19 @@ void processTrashClaw() {
     delay = 0;
   }
 
-  // If closeTrashClaw equals true then servoOutput equals 127
+
+
+  // If closeTrashClaw equals true then servoOutput equals -65
+  //    Or if closeReefClaw equals true then servoOutput equals -35
   if (closeTrashClaw) {
-    servoOutput = 70;
+    servoOutput = -68;
+  } else if (closeReefClaw) {
+    servoOutput = -50;
   } else {
-    // Otherwise servoOutput equals -127
-    servoOutput = -70;
+    // Otherwise servoOutput equals -65
+    servoOutput = 68;
   }
+
 
   // Set the servo
   motorSet(SERVO_CLAW_PORT, servoOutput);

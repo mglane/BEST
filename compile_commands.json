@@ -210,11 +210,11 @@
             "-fdiagnostics-color",
             "-std=gnu99",
             "-o",
-            "bin/trashclaw.c.o",
-            "src\\trashclaw.c"
+            "bin/arm.c.o",
+            "src\\arm.c"
         ],
         "directory": "D:\\BEST\\2018\\Programming\\BEST",
-        "file": "src\\trashclaw.c"
+        "file": "src\\arm.c"
     },
     {
         "arguments": [
@@ -241,10 +241,10 @@
             "-fdiagnostics-color",
             "-std=gnu99",
             "-o",
-            "bin/arm.c.o",
-            "src\\arm.c"
+            "bin/trashclaw.c.o",
+            "src\\trashclaw.c"
         ],
         "directory": "D:\\BEST\\2018\\Programming\\BEST",
-        "file": "src\\arm.c"
+        "file": "src\\trashclaw.c"
     }
 ]
