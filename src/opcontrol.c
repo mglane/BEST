@@ -48,13 +48,16 @@ void operatorControl() {
       /*
        * Buttons used:
        *
-       * Joysticks 2 & 3, Buttons 7 Right and Left On DriveTrain
-       * Buttons 8 Up & Down On Arm
-       * Buttons 8 Left & Right On CanClaws
-       * Buttons 5 Up On ManiClaw
-       * Buttons 6 Up & Down On HoseAim
-       * Buttons 5 Down On HoseFire
-       *
+       * Joystick 2: Raise and lower arm
+       * Joystick 4: Rotate arm
+       * Button 5 Down: Drivetrain move forward
+       * Button 5 Up: Close trash claw
+       * Button 6 Down: Drivetrain move backward
+       * Button 6 Up: Release telescoping arm
+                      Close reef claw
+       * Button 7 Left: Half rotation speed
+       * Button 7 Right: Reverse drivetrain direction
+       * Button 7 Down: Reverse arm rotation direction
        *
        *  Button postions on the controller:
        *
@@ -70,8 +73,6 @@ void operatorControl() {
        *  V                 V
        */
 
-
-
-    taskDelay(20);
+    taskDelay(20); // delay so cortex isn't running constantly
   }
 }

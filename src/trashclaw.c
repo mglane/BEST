@@ -45,12 +45,9 @@ void processTrashClaw() {
 
       P(D_MIN, "TrashClaw: %d\n", closeTrashClaw);
     }
-  } else {
-    // Otherwise delay gets reset
+  } else { // Otherwise delay gets reset
     delay = 0;
   }
-
-
 
   // If closeTrashClaw equals true then servoOutput equals -70
   //    Or if closeReefClaw equals true then servoOutput equals -35
@@ -62,7 +59,6 @@ void processTrashClaw() {
     // Otherwise servoOutput equals -65
     servoOutput = 70;
   }
-
 
   // Set the servo
   motorSet(SERVO_CLAW_PORT, servoOutput);

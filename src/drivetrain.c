@@ -23,11 +23,9 @@ void processDriveTrain() {
   // Static variables for reverse mode.
   static int reverseDriveTrainDelay = 0;
   static int reverseDriveTrain = 1;
-  //g_halfSpeed = false;
-  //g_halfSpeedDelay = 0;
+
   // A variable for the speed of the driving motors.
   int drive_speed;
-
 
   // The reverse mode code.
   if(joystickGetDigital(1, 7, JOY_RIGHT)){
@@ -36,30 +34,26 @@ void processDriveTrain() {
     if(reverseDriveTrainDelay++ == 20){
       reverseDriveTrain *= -1;
     }
-  }
-  // If the button is released reset the delay.
-  else {
+
+  }  else {   // If the button is released reset the delay.
     reverseDriveTrainDelay = 0;
   }
 
-
-
   // If the correct buttons are pressed, set the driving speed.
-  if (joystickGetDigital(1,5, JOY_DOWN))
-  {
+  if (joystickGetDigital(1,5, JOY_DOWN)) {
+
     drive_speed = MOTOR_MAX * reverseDriveTrain;
     P(D_MIN, "Driving forward\n");
 
-  }
-  else if (joystickGetDigital(1,6, JOY_DOWN))
-  {
+  } else if (joystickGetDigital(1,6, JOY_DOWN))  {
+
     drive_speed = -MOTOR_MAX * reverseDriveTrain;
     P(D_MIN, "Driving backward\n");
-  }
-  // Otherwise set the speed to zero.
-  else
-  {
+
+  } else { // Otherwise set the speed to zero.
+
     drive_speed = 0;
+
   }
 
   // Set the motor's speed.

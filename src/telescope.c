@@ -39,7 +39,7 @@ void processTelescope() {
     delay = 0;
   }
 
-  // If closeTrashClaw equals true then servoOutput equals 127
+  // If closeServo equals true then servoOutput equals 127
   if (closeServo) {
     telescope = 127;
   } else {
