@@ -15,7 +15,7 @@
 #define DEBUG_H_
 
 #ifndef DEBUG
-#define DEBUG 1
+#define DEBUG 0
 #endif
 
 #define D_MIN   0x00010000  // Minimum level
