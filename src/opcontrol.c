@@ -14,6 +14,7 @@
 #include "arm.h"
 #include "trashclaw.h"
 #include "telescope.h"
+#include "trashclawmotor.h"
 
 
 #include "debug.h"
@@ -44,6 +45,7 @@ void operatorControl() {
       processArm();         // process to handle arm movement
       processTrashClaw();   // process for claw movement
       processTelescope();  // process for telescoping arm
+      processTrashclawmotor(); //process for claw movement
 
       /*
        * Buttons used:
