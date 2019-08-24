@@ -9,13 +9,11 @@
 
 #include "main.h"
 
-
 #include "drivetrain.h"
 #include "arm.h"
 #include "trashclaw.h"
 #include "telescope.h"
 #include "trashclawmotor.h"
-
 
 #include "debug.h"
 int dbgmsk = D_MIN|D_MED|D_TRACE|D_1;

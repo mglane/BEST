@@ -52,12 +52,12 @@ void processTrashClaw() {
   // If closeTrashClaw equals true then servoOutput equals -70
   //    Or if closeReefClaw equals true then servoOutput equals -35
   if (closeTrashClaw) {
-    servoOutput = -70;
+    servoOutput = -80;
   } else if (closeReefClaw) {
     servoOutput = -35;
   } else {
     // Otherwise servoOutput equals -65
-    servoOutput = 70;
+    servoOutput = 50;
   }
 
   // Set the servo
