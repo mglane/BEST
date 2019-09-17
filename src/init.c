@@ -18,17 +18,6 @@
  * configure a UART port (usartOpen()) but cannot set up an LCD (lcdInit()).
  */
 void initializeIO() {
-
-    // set analog ports
-  //  pinMode(SENSOR_POT_PORT, INPUT_ANALOG);
-
-    /*
-     * this is our limit switch for the arm
-     * initialize this as an input pin
-     */
-    //pinMode(LIMIT_ARM_DOWN_PORT, INPUT);
-    //pinMode(LIMIT_ARM_UP_PORT, INPUT);
-
 }
 
 /*
@@ -45,11 +34,4 @@ void initializeIO() {
  * can be implemented in this task if desired.
  */
 void initialize() {
-
-  setTeamName("SCHE #955");
-
-  // commented out for now until we add automated code
-  //  semaAutoDump = semaphoreCreate();
-  //  mutexArmControl = mutexCreate();
-
 }

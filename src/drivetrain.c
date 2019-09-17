@@ -6,8 +6,9 @@
  *   LeftShoulderButton drives one direction
  *   RightShoulderButton drives in the opposite direction
  *
- * Last modified: October 2, 2018
- *        Author: Allen & Carver
+ * 2019/09/16:
+ *   Intial code for drive motors
+ *   Rebekah
  *
  */
 
@@ -20,42 +21,47 @@ extern int dbgmsk;
 
 //Process when called
 void processDriveTrain() {
-  // Static variables for reverse mode.
-  static int reverseDriveTrainDelay = 0;
-  static int reverseDriveTrain = 1;
+  int motorLOutput = 0;
+  int motorROutput = 0;
 
-  // A variable for the speed of the driving motors.
-  int drive_speed;
+  static bool halfSpeed;
+  static int halfSpeedDelay;
 
-  // The reverse mode code.
-  if(joystickGetDigital(1, 7, JOY_RIGHT)){
+  // We want to be able to reverse the state of the motors
+  static int reverseDelay;
 
-    // If reverseDriveTrainDelay is equal to 50, than reverse the driving motors.
-    if(reverseDriveTrainDelay++ == 20){
-      reverseDriveTrain *= -1;
+  /*
+   * determine whether the robot should move at
+   *  half speed
+   * this state will be remembered so the robot
+   *  stays in "half speed" mode until the button
+   *  is activated again
+   */
+  if (joystickGetDigital(1, 7, JOY_LEFT)) {
+    // put in a delay of a half second
+    //   in case the button was hit by accident
+    if (halfSpeedDelay++ == 10) {
+      // toggle the state of the speed and reset the counter
+      halfSpeed = !halfSpeed;
+
+      P(D_MIN, "Halfspeed setting: %d\n", halfSpeed);
     }
-
-  }  else {   // If the button is released reset the delay.
-    reverseDriveTrainDelay = 0;
+  } else {
+    // the button has been released, reset the time counter
+    halfSpeedDelay = 0;
   }
 
-  // If the correct buttons are pressed, set the driving speed.
-  if (joystickGetDigital(1,5, JOY_DOWN)) {
-
-    drive_speed = MOTOR_MAX * reverseDriveTrain;
-    P(D_MIN, "Driving forward\n");
-
-  } else if (joystickGetDigital(1,6, JOY_DOWN))  {
-
-    drive_speed = -MOTOR_MAX * reverseDriveTrain;
-    P(D_MIN, "Driving backward\n");
-
-  } else { // Otherwise set the speed to zero.
-
-    drive_speed = 0;
-
+  /*
+   * if the robot is in half speed mode, divide both motor
+   *  output values by 2
+   */
+  if (halfSpeed) {
+    motorLOutput = (motorLOutput >> 1);
+    motorROutput = (motorROutput >> 1);
   }
 
-  // Set the motor's speed.
-  motorSet(MOTOR_WHEEL_PORT, drive_speed);
+  P(D_MAX, "RMotor: %d, LMotor: %d\n", motorROutput, motorLOutput);
+
+  motorSet(MOTOR_L_WHEEL_PORT, motorLOutput);
+  motorSet(MOTOR_R_WHEEL_PORT, motorROutput);
 }

@@ -103,9 +103,10 @@ void operatorControl();
  *  and high (ports 6-9) banks; split large and small
  *  motors into separate banks
  */
-#define MOTOR_ARM_ROTATING_PORT 2
-#define MOTOR_ARM_TELESCOPING_PORT 6
-#define MOTOR_WHEEL_PORT 3
+#define MOTOR_ARM_ROTATING_PORT 3
+#define MOTOR_ARM_TELESCOPING_PORT 5
+#define MOTOR_L_WHEEL_PORT 2
+#define MOTOR_R_WHEEL_PORT 6
 #define MOTOR_ARM_VERTICAL_PORT 7
 
 #define SERVO_CLAW_PORT 4
