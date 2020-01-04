@@ -12,7 +12,7 @@ extern "C" {
  * @param void
  * @return void
  */
-void processTrashClaw();
+void processLineClaw();
 
 // End C++ extern to C
 #ifdef __cplusplus

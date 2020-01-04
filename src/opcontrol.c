@@ -11,9 +11,11 @@
 
 #include "drivetrain.h"
 #include "arm.h"
-#include "trashclaw.h"
+#include "lineclaw.h"
 #include "telescope.h"
 #include "trashclawmotor.h"
+#include "ir.h"
+#include "autonomous.h"
 
 #include "debug.h"
 int dbgmsk = D_MIN|D_MED|D_TRACE|D_1;
@@ -37,27 +39,43 @@ int dbgmsk = D_MIN|D_MED|D_TRACE|D_1;
  */
 void operatorControl() {
 
+int x=0;
+
   while (true) {
 
       processDriveTrain();  // process for wheel movement
       processArm();         // process to handle arm movement
-      processTrashClaw();   // process for claw movement
-      processTelescope();  // process for telescoping arm
-      processTrashclawmotor(); //process for claw movement
+      processLineClaw(); //process for claw movement
+//      processTrashClaw();   // process for claw movement
+//      processTelescope();  // process for telescoping arm
+//      processTrashclawmotor(); //process for claw movement
+      checkAutoDrive();
+
+//      ir_detect_low(IR1_PORT);
+//      ir_detect_high(IR1_PORT);
+//      ir_detect_edge(IR1_PORT);
+
+//    ir_count_low(IR1_PORT, 1);
+
+//    ir_armAuto_count(IR1_PORT);
+
 
       /*
        * Buttons used:
        *
-       * Joystick 2: Raise and lower arm
+       * Joystick 2: Right wheel
+       * Joystick 3: Left wheel
        * Joystick 4: Rotate arm
        * Button 5 Down: Drivetrain move forward
        * Button 5 Up: Close trash claw
        * Button 6 Down: Drivetrain move backward
-       * Button 6 Up: Release telescoping arm
-                      Close reef claw
-       * Button 7 Left: Half rotation speed
-       * Button 7 Right: Reverse drivetrain direction
-       * Button 7 Down: Reverse arm rotation direction
+       * Button 6 Up: Drivetrain move foward
+       * Button 7 Left:
+       * Button 7 Right: Half speed driving
+       * Button 7 Up: Raise the arm
+       * Button 7 Down: Lower the arm
+       * Button 8 Up: Extend the arm
+       * Button 8 Down: Retract the arm
        *
        *  Button postions on the controller:
        *

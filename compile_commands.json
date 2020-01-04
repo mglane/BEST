@@ -24,7 +24,69 @@
             "-fdiagnostics-color",
             "-std=gnu99",
             "-o",
-            "bin/telescope.c.o",
+            "C:/Users/lane/AppData/Local/Temp/tmp7o6j75yp/trashclawmotor.c.o",
+            "src\\trashclawmotor.c"
+        ],
+        "directory": "D:\\data\\BEST\\2019\\Programming\\BEST",
+        "file": "src\\trashclawmotor.c"
+    },
+    {
+        "arguments": [
+            "clang++",
+            "-c",
+            "-target",
+            "armv7ar-none-none-eabi",
+            "-fno-ms-extensions",
+            "-fno-ms-compatibility",
+            "-fno-delayed-template-parsing",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/7.2.1/include",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/7.2.1/include-fixed",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/include",
+            "-isystem./include",
+            "-iquote./include/./",
+            "-mthumb",
+            "-mcpu=cortex-m3",
+            "-mlittle-endian",
+            "-Os",
+            "-ffunction-sections",
+            "-fsigned-char",
+            "-fomit-frame-pointer",
+            "-fsingle-precision-constant",
+            "-fdiagnostics-color",
+            "-std=gnu99",
+            "-o",
+            "C:/Users/lane/AppData/Local/Temp/tmp7o6j75yp/auto.c.o",
+            "src\\auto.c"
+        ],
+        "directory": "D:\\data\\BEST\\2019\\Programming\\BEST",
+        "file": "src\\auto.c"
+    },
+    {
+        "arguments": [
+            "clang++",
+            "-c",
+            "-target",
+            "armv7ar-none-none-eabi",
+            "-fno-ms-extensions",
+            "-fno-ms-compatibility",
+            "-fno-delayed-template-parsing",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/7.2.1/include",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/7.2.1/include-fixed",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/include",
+            "-isystem./include",
+            "-iquote./include/./",
+            "-mthumb",
+            "-mcpu=cortex-m3",
+            "-mlittle-endian",
+            "-Os",
+            "-ffunction-sections",
+            "-fsigned-char",
+            "-fomit-frame-pointer",
+            "-fsingle-precision-constant",
+            "-fdiagnostics-color",
+            "-std=gnu99",
+            "-o",
+            "C:/Users/lane/AppData/Local/Temp/tmp7o6j75yp/telescope.c.o",
             "src\\telescope.c"
         ],
         "directory": "D:\\data\\BEST\\2019\\Programming\\BEST",
@@ -86,11 +148,11 @@
             "-fdiagnostics-color",
             "-std=gnu99",
             "-o",
-            "bin/trashclaw.c.o",
-            "src\\trashclaw.c"
+            "bin/drivetrain.c.o",
+            "src\\drivetrain.c"
         ],
         "directory": "D:\\data\\BEST\\2019\\Programming\\BEST",
-        "file": "src\\trashclaw.c"
+        "file": "src\\drivetrain.c"
     },
     {
         "arguments": [
@@ -117,11 +179,11 @@
             "-fdiagnostics-color",
             "-std=gnu99",
             "-o",
-            "bin/auto.c.o",
-            "src\\auto.c"
+            "bin/ir.c.o",
+            "src\\ir.c"
         ],
         "directory": "D:\\data\\BEST\\2019\\Programming\\BEST",
-        "file": "src\\auto.c"
+        "file": "src\\ir.c"
     },
     {
         "arguments": [
@@ -179,11 +241,11 @@
             "-fdiagnostics-color",
             "-std=gnu99",
             "-o",
-            "bin/trashclawmotor.c.o",
-            "src\\trashclawmotor.c"
+            "bin/lineclaw.c.o",
+            "src\\lineclaw.c"
         ],
         "directory": "D:\\data\\BEST\\2019\\Programming\\BEST",
-        "file": "src\\trashclawmotor.c"
+        "file": "src\\lineclaw.c"
     },
     {
         "arguments": [
@@ -241,10 +303,10 @@
             "-fdiagnostics-color",
             "-std=gnu99",
             "-o",
-            "bin/drivetrain.c.o",
-            "src\\drivetrain.c"
+            "bin/autonomous.c.o",
+            "src\\autonomous.c"
         ],
         "directory": "D:\\data\\BEST\\2019\\Programming\\BEST",
-        "file": "src\\drivetrain.c"
+        "file": "src\\autonomous.c"
     }
 ]

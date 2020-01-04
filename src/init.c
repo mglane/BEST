@@ -18,6 +18,9 @@
  * configure a UART port (usartOpen()) but cannot set up an LCD (lcdInit()).
  */
 void initializeIO() {
+  pinMode(IR1_PORT, INPUT);
+  pinMode(IR2_PORT, INPUT);
+  pinMode(IR3_PORT, INPUT);
 }
 
 /*
@@ -34,4 +37,5 @@ void initializeIO() {
  * can be implemented in this task if desired.
  */
 void initialize() {
+  setTeamName("SCHE #955");
 }

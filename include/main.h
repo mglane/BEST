@@ -103,19 +103,26 @@ void operatorControl();
  *  and high (ports 6-9) banks; split large and small
  *  motors into separate banks
  */
-#define MOTOR_ARM_ROTATING_PORT 3
-#define MOTOR_ARM_TELESCOPING_PORT 5
-#define MOTOR_L_WHEEL_PORT 2
-#define MOTOR_R_WHEEL_PORT 6
+#define MOTOR_ARM_EXTEND_PORT 3
 #define MOTOR_ARM_VERTICAL_PORT 7
 
-#define SERVO_CLAW_PORT 4
+//#define MOTOR_ARM_TELESCOPING_PORT 5
+
+#define MOTOR_L_WHEEL_PORT 2
+#define MOTOR_R_WHEEL_PORT 6
+
+#define SERVO_LINECLAW_PORT 4
+#define SERVO_PAYLOAD_PORT 8
+
+/*
 #define SERVO_CLAW_PORT_2 5
 #define SERVO_TELESCOPE_PORT 8
 #define SERVO_FILAMENT_PINCHER_PORT 9
+*/
 
-
-
+#define IR1_PORT 1
+#define IR2_PORT 2
+#define IR3_PORT 3
 
 // End C++ export structure
 #ifdef __cplusplus

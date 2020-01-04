@@ -14,6 +14,8 @@ extern "C" {
  */
 void processDriveTrain();
 
+void AutoDrivetrain();
+
 // End C++ extern to C
 #ifdef __cplusplus
 }

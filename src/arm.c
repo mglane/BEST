@@ -9,7 +9,9 @@
  *
  * Last modified: October 13, 2018
  *        Author: Carver
- *
+ *2019/09/23
+ * Commented out reverse arm rotation
+ * Rebekah
  */
 
 #include "arm.h"
@@ -21,60 +23,53 @@ extern int dbgmsk;
 void processArm()
 {
 
-  // Static variables for reverse mode.
-  static int reverseArmDelay = 0;
-  static int reverseArm = 1;
-  // Static veriables for halving the rotation speed of the arm
-  static bool halfrotSpeed = 0;
-  static int halfrotSpeedDelay = 10;
+  // Code for raising and lowering the arm
+  int vertical = 0;
 
-  // The reverse mode code.
-  if(joystickGetDigital(1, 7, JOY_DOWN)){
+  static int armUDelay = 0;
+  static int armDDelay = 0;
 
-    // If reverseDriveTrainDelay is equal to 20, than reverse the driving motors.
-    if(reverseArmDelay++ == 20){
-      reverseArm *= -1;
-    }
-  }
-  // If the button is released reset the delay.
-  else {
-    reverseArmDelay = 0;
-  }
-
-  // Code for the rotating and up/down functions
-  int vertical = joystickGetAnalog(1, 2);
-  int rotating = joystickGetAnalog(1, 4) * reverseArm;
-
-  /*
-   * determine whether the robot should move at
-   *  half speed
-   * this state will be remembered so the robot
-   *  stays in "half speed" mode until the button
-   *  is activated again
-   */
-  if (joystickGetDigital(1, 7, JOY_LEFT)) {
-    // put in a delay of a half second
-    //   in case the button was hit by accident
-    if (halfrotSpeedDelay++ == 10) {
-      // toggle the state of the speed and reset the counter
-      halfrotSpeed = !halfrotSpeed;
-
-      P(D_MIN, "Halfspeed setting: %d\n", halfrotSpeed);
+  if(joystickGetDigital(1, 7, JOY_UP)) {
+    if(armUDelay++ > 10){
+      vertical = 127;
     }
   } else {
-    // the button has been released, reset the time counter
-    halfrotSpeedDelay = 0;
+    armUDelay = 0;
   }
 
-  // * if the robot is in half speed mode, divide both motor
-  // *  output values by 2
-
-  if (halfrotSpeed) {
-    rotating = (rotating >> 1);
+  if(joystickGetDigital(1, 7, JOY_DOWN)) {
+    if(armDDelay++ > 5){
+      vertical = -127;
+    }
+  } else {
+    armDDelay = 0;
   }
-  // end of halfSpeed process
+
+  // Code for extending and retracting the arm
+  int extend = 0;
+
+  static int extendDelay = 0;
+  static int retractDelay =0;
+
+  if(joystickGetDigital(1, 8, JOY_UP)) {
+    if(extendDelay++ > 5){
+      extend = 127;
+    }
+  } else {
+    extendDelay = 0;
+  }
+
+  if(joystickGetDigital(1, 8, JOY_DOWN)) {
+    if(retractDelay++ > 10){
+      extend = -127;
+    }
+  } else {
+    retractDelay = 0;
+  }
+
+//  P(D_MAX, "SmallRMotor: %d, SmallLMotor: %d\n", vertical, extend);
 
   motorSet(MOTOR_ARM_VERTICAL_PORT, vertical);
-  motorSet(MOTOR_ARM_ROTATING_PORT, rotating);
+  motorSet(MOTOR_ARM_EXTEND_PORT, extend);
 
 }
